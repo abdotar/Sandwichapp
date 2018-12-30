@@ -97,7 +97,7 @@ namespace Sandwichapp
 			}
 			if (typeid == 4)
 			{
-				typelabel.Text = "КОМПЛЕКСЫ";
+				typelabel.Text = "КОМПЛЕКСЫ И ДРУГОЕ";
 				labelicon.Source = ImageSource.FromResource("Sandwichapp.images.complexicon.png");
 			}
 			if (typeid == 5)
@@ -137,7 +137,7 @@ namespace Sandwichapp
 			Grid imagegrid = new Grid();
 			{
 				imagegrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-				imagegrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(370, GridUnitType.Absolute) });
+				imagegrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(270, GridUnitType.Absolute) });
 			};
 			StackLayout menustack = new StackLayout();
 			StackLayout namestack = new StackLayout();
@@ -250,11 +250,8 @@ namespace Sandwichapp
 		}
 
 		// method called when pressed on labelstack
-		private async void expandstack(object sender, EventArgs e)
+		private  void expandstack(object sender, EventArgs e)
 		{
-
-			
-
 			if (expand.IsVisible)
 			{
 				StartAnimation();
@@ -265,8 +262,6 @@ namespace Sandwichapp
 				StartAnimation();
 				expand.IsVisible = true;
 			}
-
-
 		}
 		private async void StartAnimation()
 		{

@@ -77,8 +77,9 @@ namespace Sandwichapp
 
 		private async void ToMainPage(object sender, EventArgs e)
 		{
+			
 
-				await Navigation.PushAsync(new MainPage(), true);
+			await Navigation.PushAsync(new MainPage(), true);
 				var existingPages = Navigation.NavigationStack.ToList();
 				foreach (var page in existingPages)
 				{

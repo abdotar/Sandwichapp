@@ -73,7 +73,7 @@ namespace Sandwichapp
 			
 
 		}
-		private async void loading(object sender, WebNavigatingEventArgs e)
+		private void loading(object sender, WebNavigatingEventArgs e)
 		{
 			
 			bar1.IsVisible = true;

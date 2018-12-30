@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandwichapp.iOS", "Sandwich
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandwichapp.UWP", "Sandwichapp\Sandwichapp.UWP\Sandwichapp.UWP.csproj", "{2540A8BF-EB24-493C-8E3E-06EEF3760D09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandwichapp", "Sandwichapp\Sandwichapp\Sandwichapp.csproj", "{D598259D-1AB6-456F-AF60-BF87BD186A91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandwichapp", "Sandwichapp\Sandwichapp\Sandwichapp.csproj", "{D598259D-1AB6-456F-AF60-BF87BD186A91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

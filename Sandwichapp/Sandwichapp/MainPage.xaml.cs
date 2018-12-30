@@ -31,7 +31,7 @@ namespace Sandwichapp
 			await DisplayAlert("Где интернет?", "Связь с итернетом потеряна", "ОK");
 		}
 
-		protected override async void OnAppearing()
+		protected override void OnAppearing()
 		{
 			center.Children.Clear();
 			main mainoffer = new main();

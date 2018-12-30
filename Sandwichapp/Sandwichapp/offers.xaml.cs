@@ -34,7 +34,7 @@ namespace Sandwichapp
 
 		}
 
-		protected override async void OnAppearing()
+		protected override void OnAppearing()
 		{
 			center.Children.Clear();
 			ask();
@@ -45,7 +45,7 @@ namespace Sandwichapp
 
 		}
 
-		public async void openyandexapp(object sender, EventArgs e)
+		public void openyandexapp(object sender, EventArgs e)
 		{
 			//DependencyService.Get<IOpenApp>().OpenExternalApp();
 			Device.BeginInvokeOnMainThread(() =>
