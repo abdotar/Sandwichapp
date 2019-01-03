@@ -31,6 +31,7 @@ namespace Sandwichapp
 			this.SetBinding(StackLayout.IsVisibleProperty, "IsRunning");
 			this.BindingContext = indicator;
 
+
 			l1.Children.Add(loadingimage);
 			l1.Children.Add(indicator);
 

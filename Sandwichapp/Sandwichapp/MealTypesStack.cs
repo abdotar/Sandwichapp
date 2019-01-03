@@ -30,6 +30,14 @@ namespace Sandwichapp
 
 
 
+		//pressable stack holds title, image and price of meal
+		StackLayout pressablepart = new StackLayout();
+
+
+		//holds the discription hidden by default
+		StackLayout expandedpart = new StackLayout();
+		
+
 		Titlelable typelabel = new Titlelable();
 
 		AppViewModel viewModel;
@@ -121,8 +129,10 @@ namespace Sandwichapp
 		}
 
 		//creates mealstack
-		private StackLayout createMenuStack(string name, string imagepath, string discription, int price)
+		/*private StackLayout createMenuStack(string name, string imagepath, string discription, int price)
 		{
+
+
 
 			Grid discriptiongrid = new Grid();
 			{
@@ -178,7 +188,7 @@ namespace Sandwichapp
 				// стеклайоут с индикатором загрузки фото
 				imageloader loadimage = new imageloader(mealimage);
 
-				//imagebutton.Image = imagepath;
+
 				mealimage.Aspect = Aspect.Fill;
 				namestack.Children.Add(mealname);
 				menustack.Children.Add(namestack);
@@ -201,8 +211,20 @@ namespace Sandwichapp
 
 
 			return menustack;
-		}
+		}*/
 
+		public void expandmeal(object sender, EventArgs e)
+		{
+			if (expandedpart.IsVisible)
+			{
+				expandedpart.IsVisible = false;
+			}
+			else
+			{
+
+				expandedpart.IsVisible = true;
+			}
+		}
 
 		public async Task GetMeals()
 		{
@@ -230,9 +252,8 @@ namespace Sandwichapp
 				string imagepath = meal.ImagePath;
 				string discription = meal.Discription;
 				int price = meal.Price;
-				StackLayout s1 = new StackLayout();
-				s1 = createMenuStack(name, imagepath, discription, price);
-				menustack.Children.Add(s1);
+				Pressablemenuitem item1 = new Pressablemenuitem(name, imagepath, discription, price);
+				menustack.Children.Add(item1);
 
 			}
 			indicatorholder.IsVisible = IsBusy;
@@ -250,17 +271,22 @@ namespace Sandwichapp
 		}
 
 		// method called when pressed on labelstack
-		private  void expandstack(object sender, EventArgs e)
+		private async  void expandstack(object sender, EventArgs e)
 		{
 			if (expand.IsVisible)
 			{
-				StartAnimation();
+
+				await labelstack.FadeTo(0, 250);
 				expand.IsVisible = false;
+				await labelstack.FadeTo(1, 250);
+				
 			}
 			else {
 
-				StartAnimation();
+				await labelstack.FadeTo(0, 250);
 				expand.IsVisible = true;
+				await labelstack.FadeTo(1, 250);
+				
 			}
 		}
 		private async void StartAnimation()

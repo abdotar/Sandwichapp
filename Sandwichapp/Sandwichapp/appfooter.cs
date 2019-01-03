@@ -53,8 +53,6 @@ namespace Sandwichapp
 			pressableimage(about, ToOffersPage);
 
 
-
-
 			btgrd.BackgroundColor = Color.Tomato;
 			btgrd.Padding = 5;
 			btgrd.Children.Add(img,0,0);
