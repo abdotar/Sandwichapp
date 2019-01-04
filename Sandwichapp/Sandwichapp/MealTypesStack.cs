@@ -44,10 +44,10 @@ namespace Sandwichapp
 
 		public ObservableCollection<Meal> Meals { get; set; }
 		MealsService mealsService = new MealsService();
-		private bool isBusy;    // идет ли загрузка с сервера
-		Image labelicon = new Image();
 		
+		Image labelicon = new Image();
 
+		private bool isBusy;    // идет ли загрузка с сервера
 		public bool IsBusy
 		{
 			get { return isBusy; }
