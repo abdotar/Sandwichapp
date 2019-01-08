@@ -11,24 +11,32 @@ using System.Threading.Tasks;
 using Sandwichapp.Models.ConnectionsCFG;
 using Sandwichapp.Models;
 
-
+//todo try to rise the preformance be changing the frame to stacks
 
 namespace Sandwichapp
 {
 	public partial class MainPage : ContentPage
 	{
-		public ObservableCollection<Offer> Offers { get; set; }
+		ActivityIndicator act1 = new ActivityIndicator();
+		StackLayout indicatorholder = new StackLayout();
+
+		offerscollection of1 = new offerscollection();
 		OffersService Service = new OffersService();
 		StackLayout holder = new StackLayout();
 		StackLayout mainoffersstack = new StackLayout();
 		offerscollection ofcl = new offerscollection();
+
+		//button wich expands with offers
+		offersstack offers = new offersstack();
+
+		//button wich expands with news
+		NewsStacklayout news = new NewsStacklayout();
+
+		bool busy;
+
 		public MainPage()
 		{
-
-
-
-			Offers = new ObservableCollection<Offer>();
-			connecttoserver();
+			busy = true;
 			InitializeComponent();
 			appheader head = new appheader();
 			appfooter foot = new appfooter();
@@ -37,26 +45,29 @@ namespace Sandwichapp
 			if (CrossConnectivity.Current != null && CrossConnectivity.Current.IsConnected == true)
 			{
 				ScrollView mainscrol = new ScrollView();// скрол вюхи
-				
-				Image mainimage = new Image();//image of main offer 
-				mainimage.Source = new UriImageSource
-				{
-					CachingEnabled = false,
-					Uri = new System.Uri("https://sandwichbistro.ru/img/Offers/10percentOffer.jpg")
-				};
-
-
-				offersstack offers = new offersstack();
-				NewsStacklayout news = new NewsStacklayout();
-				Offerframe offer1 = new Offerframe("Akcia 1"," akcia dla vladelcev prilazhuhi",mainimage);
-				//main mainoffer = new main();
-				mainoffersstack.Children.Add(offer1);
+				holder.Children.Add(indicatorholder);
 				holder.Children.Add(mainoffersstack);
-				getmainoffers();
 				holder.Children.Add(offers);
 				holder.Children.Add(news);
+				act1.IsRunning = true;
+				indicatorholder.HorizontalOptions = LayoutOptions.CenterAndExpand;
+				indicatorholder.VerticalOptions = LayoutOptions.Center;
+				indicatorholder.Orientation = StackOrientation.Horizontal;
+				Label loadinglabel = new Label();
+				loadinglabel.VerticalOptions = LayoutOptions.CenterAndExpand;
+				loadinglabel.Text = "Загрузка данных.....";
+				indicatorholder.Children.Add(act1);
+				indicatorholder.Children.Add(loadinglabel);
 				mainscrol.Content = holder;
-				center.Children.Add(mainscrol);
+
+				if (ofcl.IsLoaded)
+				{
+					IsBusy = false;
+					fillmainofferframe();
+					fillsecondaryoffersframe();
+					center.Children.Add(mainscrol);
+				}
+				
 				
 			}
 			else
@@ -70,9 +81,15 @@ namespace Sandwichapp
 		{
 			await DisplayAlert("Где интернет?", "Связь с итернетом потеряна", "ОK");
 		}
-		private void getmainoffers()
+
+
+		
+
+		protected async void fillmainofferframe()
+
 		{
-			foreach(Offer offer in Offers)
+			await of1.GetOffers();
+			foreach (Offer offer in of1.Offers.Where(x => x.IsMain == true && x.IsActive == true))
 			{
 				if (offer.ImagePath != null)
 				{
@@ -85,34 +102,38 @@ namespace Sandwichapp
 					Offerframe offer1 = new Offerframe(offer.Name, offer.Discription, offerimage);
 					mainoffersstack.Children.Add(offer1);
 				}
-				
+				indicatorholder.IsVisible = IsBusy;
 
-				
+
 			}
+
 		}
-		public async Task GetOffers()
+
+		protected async void fillsecondaryoffersframe()
 		{
-			IEnumerable<Offer> offers = await Service.Get();
+			await of1.GetOffers();
+			foreach (Offer offer in of1.Offers.Where(x => x.IsMain == false && x.IsActive == true))
+			{
+				if (offer.ImagePath != null)
+				{
+					Image offerimage = new Image();
+					offerimage.Source = new UriImageSource
+					{
+						CachingEnabled = false,
+						Uri = new System.Uri(offer.ImagePath)
+					};
+					Offerframe offer1 = new Offerframe(offer.Name, offer.Discription, offerimage);
 
-			// очищаем список
-			//Friends.Clear();
-			while (Offers.Any())
-				Offers.RemoveAt(Offers.Count - 1);
+					//offers.fillexpander(offer1);
+					offers.expanded.Children.Add(offer1);
+					//mainoffersstack.Children.Add(offer1);
+				}
+				indicatorholder.IsVisible = IsBusy;
 
-			// добавляем загруженные данные
-			foreach (Offer f in offers)
-				Offers.Add(f);
+
+			}
+			busy = false;
 		}
-
-		protected async void connecttoserver()
-
-		{
-			await GetOffers();
-			//add method to run trough all types and create diferent albles
-		}
-
-
-
 
 
 		protected override void OnAppearing()

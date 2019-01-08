@@ -152,7 +152,7 @@ namespace Sandwichapp
 
 		}
 
-		private StackLayout menustack(string name, string imagepath, string discription, int price)
+	/*	private StackLayout menustack(string name, string imagepath, string discription, int price)
 		{
 
 			Grid discriptiongrid = new Grid();
@@ -233,7 +233,7 @@ namespace Sandwichapp
 
 			return menustack;
 		}
-
+		*/
 
 		protected override async void OnAppearing()
 		{

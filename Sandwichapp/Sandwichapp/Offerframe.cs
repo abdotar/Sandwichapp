@@ -64,6 +64,7 @@ namespace Sandwichapp
 			}
 		}
 
+
 		private void pressablstack(Frame st, EventHandler ev)
 		{
 			//Creating TapGestureRecognizers    

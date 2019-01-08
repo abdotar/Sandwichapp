@@ -13,11 +13,29 @@ namespace Sandwichapp
 {
     public class offerscollection
     {
+
+
+		private bool isBusy;    // идет ли загрузка с сервера
+		public bool IsBusy
+		{
+			get { return isBusy; }
+			set
+			{
+				isBusy = value;
+			}
+		}
+		public bool IsLoaded
+		{
+			get { return !isBusy; }
+		}
+
+
 		public ObservableCollection<Offer> Offers { get; set; }
 		OffersService Service = new OffersService();
 
 		public offerscollection()
 		{
+			isBusy = false;
 			Offers = new ObservableCollection<Offer>();
 			connecttoserver();
 		}
@@ -41,6 +59,7 @@ namespace Sandwichapp
 
 		{
 			await GetOffers();
+			isBusy = false;
 			//add method to run trough all types and create diferent albles
 		}
 

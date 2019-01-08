@@ -13,12 +13,12 @@ using System.Collections.ObjectModel;
 
 namespace Sandwichapp
 {
-	public class offersstack: StackLayout
+	public class offersstack : StackLayout
 	{
 
 
 		//holds the offersstack and unvisible by default
-		StackLayout expanded = new StackLayout();
+		public StackLayout expanded = new StackLayout();
 		//title of stacklayout
 		Label title = new Label();
 		Frame stackframe = new Frame();
@@ -51,11 +51,16 @@ namespace Sandwichapp
 			this.Children.Add(stackframe);
 			pressablstack(this, expandmeal);
 			//code to add data to expand(for each offer)
+		}
 
+		public void fillexpander(Frame offerframe)
+		{
+			expanded.Children.Add(offerframe);
+
+		}
 
 			
 
-		}
 		public async void expandmeal(object sender, EventArgs e)
 		{
 			if (expanded.IsVisible)
