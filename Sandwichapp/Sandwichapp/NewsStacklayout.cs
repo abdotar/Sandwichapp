@@ -9,7 +9,7 @@ namespace Sandwichapp
     {
 
 		//holds the offersstack and unvisible by default
-		StackLayout expanded = new StackLayout();
+		public StackLayout expanded = new StackLayout();
 		//title of stacklayout
 		Label title = new Label();
 		Frame stackframe = new Frame();

@@ -11,9 +11,8 @@ using System.Collections.ObjectModel;
 
 namespace Sandwichapp
 {
-    public class offerscollection
+    class NewsCollection
     {
-
 
 		private bool isBusy;    // идет ли загрузка с сервера
 		public bool IsBusy
@@ -30,41 +29,39 @@ namespace Sandwichapp
 		}
 
 
-		public ObservableCollection<Offer> Offers { get; set; }
-		OffersService Service = new OffersService();
+		public ObservableCollection<New> News { get; set; }
+		NewsService Service = new NewsService();
 
-		public offerscollection()
+		public NewsCollection()
 		{
 			isBusy = false;
+			News = new ObservableCollection<New>();
 			connecttoserver();
-			Offers = new ObservableCollection<Offer>();
-			
 		}
 
 
-		public async Task GetOffers()
+		public async Task GetNews()
 		{
-			IEnumerable<Offer> offers = await Service.Get();
+			IEnumerable<New> news = await Service.Get();
 
 			// очищаем список
 			//Friends.Clear();
-			while (Offers.Any())
-				Offers.RemoveAt(Offers.Count - 1);
+			while (News.Any())
+				News.RemoveAt(News.Count - 1);
 
 			// добавляем загруженные данные
-			foreach (Offer f in offers)
-				Offers.Add(f);
-			Offers = new ObservableCollection<Offer>(Offers.OrderByDescending(x => x.Id));
+			foreach (New n in news)
+				News.Add(n);
 
+			News = new ObservableCollection<New>(News.OrderByDescending(x => x.Id));
 		}
 
 		protected async void connecttoserver()
 
 		{
-			await GetOffers();
+			await GetNews();
 			isBusy = false;
 			//add method to run trough all types and create diferent albles
 		}
-
 	}
 }

@@ -67,7 +67,7 @@ namespace Sandwichapp
 			{
 				await this.FadeTo(0, 250);
 				expanded.IsVisible = false;
-				this.VerticalOptions = LayoutOptions.Center;
+				//this.VerticalOptions = LayoutOptions.Center;
 				await this.FadeTo(1, 250);
 
 
@@ -75,7 +75,7 @@ namespace Sandwichapp
 			else
 			{
 				await this.FadeTo(0, 250);
-				this.VerticalOptions = LayoutOptions.Start;
+				//this.VerticalOptions = LayoutOptions.Start;
 				expanded.IsVisible = true;
 				await this.FadeTo(1, 250);
 

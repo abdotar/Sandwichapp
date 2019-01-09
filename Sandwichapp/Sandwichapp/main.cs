@@ -63,9 +63,9 @@ namespace Sandwichapp
 
 			
 			
-			NewsStack st1 = new NewsStack();
+			//NewsStack st1 = new NewsStack();
 
-			stackinScrol.Children.Add(st1);
+			//stackinScrol.Children.Add(st1);
 
 			mainscrol.Content = stackinScrol;
 			this.Children.Add(mainscrol);

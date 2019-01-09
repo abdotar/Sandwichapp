@@ -50,7 +50,7 @@ namespace Sandwichapp
 
 			pressableimage(img,ToMainPage);
 			pressableimage(menu, ToOurmenuPage);
-			pressableimage(about, ToOffersPage);
+			pressableimage(about, ToAboutPage);
 
 
 			btgrd.BackgroundColor = Color.Tomato;

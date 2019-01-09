@@ -17,20 +17,19 @@ namespace Sandwichapp
 {
 	public partial class MainPage : ContentPage
 	{
+
+
+		//to do  create a class wich connects to server seperatly from main page
+
+		offersstack offers = new offersstack();
+		offerscollection of1 = new offerscollection();
+		//button wich expands with news
 		ActivityIndicator act1 = new ActivityIndicator();
 		StackLayout indicatorholder = new StackLayout();
 
-		offerscollection of1 = new offerscollection();
-		OffersService Service = new OffersService();
+
 		StackLayout holder = new StackLayout();
 		StackLayout mainoffersstack = new StackLayout();
-		offerscollection ofcl = new offerscollection();
-
-		//button wich expands with offers
-		offersstack offers = new offersstack();
-
-		//button wich expands with news
-		NewsStacklayout news = new NewsStacklayout();
 
 		bool busy;
 
@@ -44,7 +43,11 @@ namespace Sandwichapp
 			buttom.Children.Add(foot);
 			if (CrossConnectivity.Current != null && CrossConnectivity.Current.IsConnected == true)
 			{
+				
+				//button wich expands with offers
+				
 				ScrollView mainscrol = new ScrollView();// скрол вюхи
+				NewsView news = new NewsView();
 				holder.Children.Add(indicatorholder);
 				holder.Children.Add(mainoffersstack);
 				holder.Children.Add(offers);
@@ -60,7 +63,7 @@ namespace Sandwichapp
 				indicatorholder.Children.Add(loadinglabel);
 				mainscrol.Content = holder;
 
-				if (ofcl.IsLoaded)
+				if (of1.IsLoaded)
 				{
 					IsBusy = false;
 					fillmainofferframe();
@@ -77,13 +80,7 @@ namespace Sandwichapp
 			}
 
 		}
-		private async void nointernet()
-		{
-			await DisplayAlert("Где интернет?", "Связь с итернетом потеряна", "ОK");
-		}
 
-
-		
 
 		protected async void fillmainofferframe()
 
@@ -138,6 +135,7 @@ namespace Sandwichapp
 
 		protected override void OnAppearing()
 		{
+			
 		}
 
 
