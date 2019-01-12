@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "466332791147",
+    "firebase_url": "https://sandwich-bf4ee.firebaseio.com",
+    "project_id": "sandwich-bf4ee",
+    "storage_bucket": "sandwich-bf4ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466332791147:android:ff658051425d0d3a",
+        "android_client_info": {
+          "package_name": "com.companyname.Sandwichapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466332791147-nm7s1oaalo6vptbn8ed9kbn9u2t1rgpg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmzK5_OvlFEzDxPynphi_9X0z0WestK1g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

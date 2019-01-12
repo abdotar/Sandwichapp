@@ -26,7 +26,7 @@ namespace Sandwichapp
 
 			appheader head = new appheader();
 			appfooter foot = new appfooter();
-
+			ask();
 			top.Children.Add(head);
 			buttom.Children.Add(foot);
 			

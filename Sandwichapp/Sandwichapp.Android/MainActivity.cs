@@ -17,15 +17,18 @@ namespace Sandwichapp.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-			Xamarin.Forms.DependencyService.Register<OpenAppAndroid>();
+			
 			TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
 			base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
 			Xamarin.FormsMaps.Init(this, savedInstanceState);
 			Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
+			Xamarin.Forms.DependencyService.Register<OpenAppAndroid>();
+			LoadApplication(new App());
+			
+
 		}
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
 		{

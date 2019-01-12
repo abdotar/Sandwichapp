@@ -71,7 +71,7 @@ namespace Sandwichapp
 					};
 					selectedMeal = null;
 					OnPropertyChanged("SelectedMeal");
-					Navigation.PushAsync(new MealsPage(tempMeal, this));
+					//Navigation.PushAsync(new MealsPage(tempMeal, this));
 				}
 			}
 		}
